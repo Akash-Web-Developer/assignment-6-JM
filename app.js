@@ -5,11 +5,13 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
+const searchField = document.getElementById('search');
 
 // Setup Enter for Search Button
 document.getElementById('search').addEventListener('keyup', function (enter) {
   if (enter.key === 'Enter') {
     searchBtn.click();
+    
   }
 });
 
@@ -41,7 +43,7 @@ const getImages = (query) => {
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
-    .catch(err => console.log(err))
+    .catch(error => console.log(error))
 }
 
 let slideIndex = 0;
@@ -62,8 +64,8 @@ const createSlider = () => {
     alert('Please Select One more Image for create Slider');
     return;
   }
+  //Setup Time For Slide Image
   const duration = document.getElementById('duration').value || 1000;
-  console.log('duration time', duration);
   if (duration < 1000) {
     alert('Please Write a Positive Time. Keep Mind it, 1 Second = 1000 MiniSecond');
     return;
@@ -131,16 +133,8 @@ searchBtn.addEventListener('click', function () {
 sliderBtn.addEventListener('click', function () {
   createSlider()
 })
-const spinner = show => {
-  const spinner = document.getElementById('loading-spinner');
-  if (show) {
-    spinner.classList.remove('d-none');
-  } else {
-    spinner.classList.add('d-none');
-  }
-}
 
-//Image Toggle for Bonus
+//Image Toggle
 const imageToggle = (element, img) => {
   element.classList.toggle('added');
   const index = sliders.indexOf(img);
@@ -148,3 +142,26 @@ const imageToggle = (element, img) => {
     sliders.splice(index, 1);
   }
 }
+
+//Add Spinner for Bonus Content
+const spinner = showImg => {
+  const spinner = document.getElementById('spinner');
+  if (showImg) {
+    spinner.classList.remove('d-none');
+  } else {
+    spinner.classList.add('d-none');
+  }
+}
+
+//Check Emty Value for Bonus Content
+function checkForEmty(){
+  if(searchField.value ==  "" || searchField.value == " " * 1000){
+    alert("Please Enter Something");
+    gallery.style.display = 'none';
+  }
+  else{
+    gallery.style.display = 'flex';
+    
+  }
+}
+

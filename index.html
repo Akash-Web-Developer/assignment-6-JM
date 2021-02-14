@@ -22,7 +22,9 @@
       <div class="input-group col-md-6 mb-2">
         <input type="text" class="form-control" id="search" placeholder="nature">
       </div>
-      <button type="button" id="search-btn" class="btn btn-primary mb-2">Search</button>
+      <button type="button" id="search-btn" onclick="checkForEmty()" class="btn btn-primary mb-2">Search</button>
+      <!-- <button type="button" id="search-btn" onclick="checkForEmty()" class="btn btn-primary mb-2">Search</button> -->
+
     </div>
     <!-- Image Section -->
     <section class="images">
@@ -33,7 +35,9 @@
         </div>
         <button id="create-slider" class="btn btn-primary px-5">Create slider</button>
       </div>
-      <div id="loading-spinner" class="d-none">
+      
+      <!-- Spinner For Bonus Content -->
+      <div id="spinner" class="d-none">
         <div class="d-flex justify-content-center">
           <div class="spinner-border text-warning" role="status">
             <span class="visually-hidden"></span>
