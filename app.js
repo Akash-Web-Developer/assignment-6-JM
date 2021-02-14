@@ -11,7 +11,7 @@ const searchField = document.getElementById('search');
 document.getElementById('search').addEventListener('keyup', function (enter) {
   if (enter.key === 'Enter') {
     searchBtn.click();
-    
+
   }
 });
 
@@ -37,7 +37,6 @@ const showImages = (images) => {
     spinner(false);
   })
 }
-
 const getImages = (query) => {
   spinner(true);
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
@@ -45,7 +44,6 @@ const getImages = (query) => {
     .then(data => showImages(data.hits))
     .catch(error => console.log(error))
 }
-
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
@@ -70,7 +68,6 @@ const createSlider = () => {
     alert('Please Write a Positive Time. Keep Mind it, 1 Second = 1000 MiniSecond');
     return;
   }
-
   // Create slider previous next area
   sliderContainer.innerHTML = '';
   const prevNext = document.createElement('div');
@@ -154,14 +151,14 @@ const spinner = showImg => {
 }
 
 //Check Emty Value for Bonus Content
-function checkForEmty(){
-  if(searchField.value ==  "" || searchField.value == " " * 1000){
-    alert("Please Enter Something");
+function checkForEmty() {
+  if (searchField.value == "" || searchField.value == " " * 1000) {
+    alert("Please Write Something in Search Box");
     gallery.style.display = 'none';
   }
-  else{
+  else {
     gallery.style.display = 'flex';
-    
+
   }
 }
 
